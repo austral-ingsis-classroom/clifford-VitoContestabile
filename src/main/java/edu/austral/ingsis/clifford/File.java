@@ -1,13 +1,15 @@
 package edu.austral.ingsis.clifford;
 
-public class File implements Files {
+import java.util.ArrayList;
+
+public final class File implements Files {
 
   private String name;
-  private Directory father;
+  private ArrayList<String> pathNames;
 
-  public File(String name, Directory father) {
+  public File(String name, ArrayList<String> pathNames) {
     this.name = name;
-    this.father = father;
+    this.pathNames = pathNames;
   }
 
   @Override
@@ -16,7 +18,17 @@ public class File implements Files {
   }
 
   @Override
-  public Directory father() {
-    return father;
+  public ArrayList<String> pathNames() {
+    return new ArrayList<>(pathNames);
+  }
+
+  @Override
+  public boolean isDirectory() {
+    return false;
+  }
+
+  @Override
+  public ArrayList<Files> getChildren() {
+    return null;
   }
 }
