@@ -11,7 +11,8 @@ public class Terminal {
   }
 
   public String takeOrders(String order) {
-    this.fs = orderParser.parse(order, fs);
-    return this.fs.getLastMessage();
+    Result result = orderParser.parse(order, fs);
+    this.fs = result.fileSystem();
+    return result.message();
   }
 }

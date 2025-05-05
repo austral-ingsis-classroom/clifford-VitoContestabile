@@ -19,7 +19,7 @@ public class OrderParser {
     map.put("rm", new Remove());
   }
 
-  public FileSystem parse(String order, FileSystem fs) {
+  public Result parse(String order, FileSystem fs) {
 
     ArrayList<String> orderAsArray = new ArrayList<>(Arrays.asList(order.split(" ")));
 
@@ -33,6 +33,6 @@ public class OrderParser {
 
       return command.execute(fs, orderAsArray);
     }
-    return new FileSystem(fs.getRoot(), fs.getCurrent(), "Invalid Order");
+    return new Result(fs, "Invalid Order");
   }
 }
